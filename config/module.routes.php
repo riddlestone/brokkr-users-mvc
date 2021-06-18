@@ -1,6 +1,6 @@
 <?php
 
-namespace Riddlestone\Brokkr\Users;
+namespace Riddlestone\Brokkr\Users\Mvc;
 
 use Laminas\Router\Http\Literal;
 use Laminas\Router\Http\Segment;
@@ -12,7 +12,7 @@ return [
             'options' => [
                 'route' => '/account',
                 'defaults' => [
-                    'controller' => Mvc\Controller\AccountController::class,
+                    'controller' => Controller\AccountController::class,
                     'action' => 'index',
                 ],
             ],
@@ -22,7 +22,7 @@ return [
             'options' => [
                 'route' => '/request-password-reset',
                 'defaults' => [
-                    'controller' => Mvc\Controller\AccountController::class,
+                    'controller' => Controller\AccountController::class,
                     'action' => 'requestPasswordReset',
                 ],
             ],
@@ -32,7 +32,7 @@ return [
             'options' => [
                 'route' => '/reset-password/:id',
                 'defaults' => [
-                    'controller' => Mvc\Controller\AccountController::class,
+                    'controller' => Controller\AccountController::class,
                     'action' => 'resetPassword',
                 ],
             ],
@@ -42,7 +42,7 @@ return [
             'options' => [
                 'route' => '/login',
                 'defaults' => [
-                    'controller' => Mvc\Controller\AccountController::class,
+                    'controller' => Controller\AccountController::class,
                     'action' => 'login',
                 ],
             ],
@@ -52,7 +52,7 @@ return [
             'options' => [
                 'route' => '/logout',
                 'defaults' => [
-                    'controller' => Mvc\Controller\AccountController::class,
+                    'controller' => Controller\AccountController::class,
                     'action' => 'logout',
                 ],
             ],
