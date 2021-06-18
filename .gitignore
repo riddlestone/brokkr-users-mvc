@@ -1,0 +1,7 @@
+/.deptrac.cache
+/.idea/
+/.phpunit.result.cache
+/build/
+/composer.lock
+/composer.phar
+/vendor/

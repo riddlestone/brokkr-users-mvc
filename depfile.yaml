@@ -1,0 +1,29 @@
+paths:
+  - ./src
+exclude_files: [ ]
+layers:
+  - name: Acl
+    collectors:
+      - type: className
+        regex: Riddlestone\\Brokkr\\Users\\Mvc\\Acl\\.*
+  - name: Controllers
+    collectors:
+      - type: className
+        regex: Riddlestone\\Brokkr\\Users\\Mvc\\Controller\\.*
+  - name: Forms
+    collectors:
+      - type: className
+        regex: Riddlestone\\Brokkr\\Users\\Mvc\\Form\\.*
+  - name: Tests
+    collectors:
+      - type: className
+        regex: Riddlestone\\Brokkr\\Users\\Mvc\\Test\\.*
+ruleset:
+  Acl:
+    - Controllers
+  Controllers:
+    - Forms
+  Tests:
+    - Acl
+    - Controllers
+    - Forms

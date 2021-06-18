@@ -1,0 +1,23 @@
+version: "3.9"
+services:
+  php73:
+    image: thecodingmachine/php:7.3-v4-cli
+    environment:
+      PHP_EXTENSIONS: "pdo_sqlite"
+      PHP_EXTENSION_XDEBUG: 1
+    volumes:
+      - ".:/usr/src/app"
+  php74:
+    image: thecodingmachine/php:7.4-v4-cli
+    environment:
+      PHP_EXTENSIONS: "pdo_sqlite"
+      PHP_EXTENSION_XDEBUG: 1
+    volumes:
+      - ".:/usr/src/app"
+  php80:
+    image: thecodingmachine/php:8.0-v4-cli
+    environment:
+      PHP_EXTENSIONS: "pdo_sqlite"
+      PHP_EXTENSION_XDEBUG: 1
+    volumes:
+      - ".:/usr/src/app"
