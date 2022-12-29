@@ -23,7 +23,7 @@ class Module
      */
     public function onBootstrap(MvcEvent $event): void
     {
-        $event->getApplication()->getEventManager()->attach('render', [$this, 'onRender']);
+        $event->getApplication()->getEventManager()->attach('render', [$this, 'onRender'], 10);
     }
 
     /**
@@ -52,13 +52,24 @@ class Module
 
         $navigation = $renderer->getHelperPluginManager()->get('navigation');
 
-        if (!$navigation instanceof Navigation) {
+        if (! $navigation instanceof Navigation) {
             return;
         }
 
-        /** @var Navigation $navigation */
-        $navigation
-            ->setAcl($serviceManager->get(Acl::class))
-            ->setRole($serviceManager->get(AuthenticationService::class)->getIdentity());
+        /** @var AuthenticationService $auth */
+        $auth = $serviceManager->get(AuthenticationService::class);
+
+        /** @var string $role */
+        $role = $auth->getIdentity();
+
+        /** @var Acl $acl */
+        $acl = $serviceManager->get(Acl::class);
+
+        if (! $acl->hasRole($role)) {
+            $role = null;
+        }
+
+        $navigation->setDefaultAcl($acl);
+        $navigation->setDefaultRole($role);
     }
 }
