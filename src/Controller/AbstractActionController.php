@@ -59,9 +59,12 @@ abstract class AbstractActionController extends MvcAbstractActionController
         $role = $this->authService->hasIdentity()
             ? $this->authService->getIdentity()
             : null;
+        if (! $this->acl->hasRole($role)) {
+            $role = null;
+        }
 
         try {
-            if (!$this->acl->isAllowed($role, $resource)) {
+            if (! $this->acl->isAllowed($role, $resource)) {
                 $event->getRouteMatch()->setParam('action', 'forbidden');
             }
         } catch (ResourceNotFound | RoleNotFound $exception) {
