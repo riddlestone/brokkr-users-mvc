@@ -27,7 +27,7 @@
     "laminas/laminas-validator": "^2.14",
     "laminas/laminas-view": "^2.12",
     "riddlestone/brokkr-acl": "^0.2.0",
-    "riddlestone/brokkr-users": "^0.2"
+    "riddlestone/brokkr-users": "^0.2.1"
   },
   "autoload": {
     "psr-4": {
@@ -94,5 +94,10 @@
       "name": "Andrew Riddlestone",
       "email": "andrew.riddlestone@gmail.com"
     }
-  ]
+  ],
+  "config": {
+    "allow-plugins": {
+      "laminas/laminas-component-installer": true
+    }
+  }
 }
